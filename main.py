@@ -43,6 +43,8 @@ for row in book_array:
         if col and col not in classes:
             splt = col.split("\n")
             col = "".join(splt)
+            splt = col.split(" ")
+            col = "".join(splt)
             classes.append(col)
 
 # 요일
@@ -98,6 +100,10 @@ for cls in classes_book:
         # 과목들 뽑아오기
         enrolled_classes = line[4:]
         for i, cls_name in enumerate(enrolled_classes):
+            splt = cls_name.split("\n")
+            cls_name = "".join(splt)
+            splt = cls_name.split(" ")
+            cls_name = "".join(splt)
             day = days[i]
             # 과목 뽑아오기
             classbook = result_book[cls_name]
