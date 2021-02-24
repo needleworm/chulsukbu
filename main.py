@@ -2,7 +2,6 @@
 """
 Author : Byunghyun Ban
 GitHub : https://github.com/needleworm
-Book : ÀÏ¹İÀÎÀ» À§ÇÑ ¾÷¹« ÀÚµ¿È­
 Last Modification : 2020.02.13.
 """
 import time
@@ -10,19 +9,19 @@ import pyexcel as px
 import sys
 
 
-# ÀÛ¾÷ ½ÃÀÛ ¸Ş½ÃÁö¸¦ Ãâ·ÂÇÕ´Ï´Ù.
+# ì‘ì—… ì‹œì‘ ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
 print("Process Start")
 
-# ½ÃÀÛ ½ÃÁ¡ÀÇ ½Ã°£À» ±â·ÏÇÕ´Ï´Ù.
+# ì‹œì‘ ì‹œì ì˜ ì‹œê°„ì„ ê¸°ë¡í•©ë‹ˆë‹¤.
 start_time = time.time()
 
-# ¿¢¼¿ ÆÄÀÏ ÀÌ¸§À» ÀÔ·Â¹Ş½À´Ï´Ù.
+# ì—‘ì…€ íŒŒì¼ ì´ë¦„ì„ ì…ë ¥ë°›ìŠµë‹ˆë‹¤.
 filename = sys.argv[1]
 
-# ¿¢¼¿ ÆÄÀÏÀ» book ÇüÅÂ·Î ºÒ·¯¿É´Ï´Ù.
+# ì—‘ì…€ íŒŒì¼ì„ book í˜•íƒœë¡œ ë¶ˆëŸ¬ì˜µë‹ˆë‹¤.
 book = px.get_book(file_name=filename)
 
-# °¢ ¹İº° Á¤º¸¸¸ »Ì¾Æ¿É´Ï´Ù
+# ê° ë°˜ë³„ ì •ë³´ë§Œ ë½‘ì•„ì˜µë‹ˆë‹¤
 class1_1 = book[1].get_array()
 class1_2 = book[2].get_array()
 class1_3 = book[3].get_array()
@@ -30,15 +29,15 @@ class1_4 = book[4].get_array()
 class1_5 = book[5].get_array()
 class1_6 = book[6].get_array()
 
-# ÀÌ°É ¹­¾î¼­ ÇÏ³ªÀÇ ¸®½ºÆ®·Î ¸¸µì´Ï´Ù.
+# ì´ê±¸ ë¬¶ì–´ì„œ í•˜ë‚˜ì˜ ë¦¬ìŠ¤íŠ¸ë¡œ ë§Œë“­ë‹ˆë‹¤.
 classes_book = [class1_1, class1_2, class1_3, class1_4, class1_5, class1_6]
 
 classes = []
-# 1¹ø ½ÃÆ®¸¦ ÀĞ¾î¿Í °ú¸ñ¸í¸¸ »Ì¾Æ¿É´Ï´Ù.
+# 1ë²ˆ ì‹œíŠ¸ë¥¼ ì½ì–´ì™€ ê³¼ëª©ëª…ë§Œ ë½‘ì•„ì˜µë‹ˆë‹¤.
 book_array = book[0].get_array()
 for row in book_array:
     for col in row:
-        if col in "¿ùÈ­¼ö¸ñ±İ":
+        if col in "ì›”í™”ìˆ˜ëª©ê¸ˆ":
             continue
         if col and col not in classes:
             splt = col.split("\n")
@@ -47,29 +46,29 @@ for row in book_array:
             col = "".join(splt)
             classes.append(col)
 
-# ¿äÀÏ
-days = ["¿ù", "È­", "¼ö", "¸ñ", "±İ"]
+# ìš”ì¼
+days = ["ì›”", "í™”", "ìˆ˜", "ëª©", "ê¸ˆ"]
 
-# °¢ °ú¸ñº° Ãâ¼®ºÎ »ùÇÃÀ» ÀúÀåÇÒ µñ¼Å³Ê¸®¸¦ ¸¸µç´Ù
+# ê° ê³¼ëª©ë³„ ì¶œì„ë¶€ ìƒ˜í”Œì„ ì €ì¥í•  ë”•ì…”ë„ˆë¦¬ë¥¼ ë§Œë“ ë‹¤
 result_book = {}
-# °¢ °ú¸ñº° Ãâ¼®ºÎ¿¡ »ğÀÔµÈ ÇĞ»ı ÀÌ¸§À» Ä«¿îÆ®ÇÏ±â À§ÇÑ µñ¼Å³Ê¸®¸¦ ¸¸µç´Ù
+# ê° ê³¼ëª©ë³„ ì¶œì„ë¶€ì— ì‚½ì…ëœ í•™ìƒ ì´ë¦„ì„ ì¹´ìš´íŠ¸í•˜ê¸° ìœ„í•œ ë”•ì…”ë„ˆë¦¬ë¥¼ ë§Œë“ ë‹¤
 dictionary_for_book = {}
 
-# °¢ °ú¸ñº°·Î Ãâ¼®ºÎ¸¦ ¸¸µé¾î ¸®½ºÆ®¿¡ Áı¾î³Ö½À´Ï´Ù.
+# ê° ê³¼ëª©ë³„ë¡œ ì¶œì„ë¶€ë¥¼ ë§Œë“¤ì–´ ë¦¬ìŠ¤íŠ¸ì— ì§‘ì–´ë„£ìŠµë‹ˆë‹¤.
 for el in classes:
     new_book = {}
     new_dictionary = {}
     line_1 = ["" for i in range(19)]
-    line_2 = ["", "", "  ¿ù  ÀÏ"] + ["/" for i in range(16)]
-    line_3 = ["", "", "  ±³  ½Ã"] + ["8" for i in range(16)]
-    line_4 = ["", "", "  °ú  ¸ñ"] + [" " for i in range(16)]
-    line_5 = ["¿¬¹ø", "¹İ", "¹øÈ£", "ÇĞ»ı¸í, °­»ç¸í"] + ["" for i in range(16)]
+    line_2 = ["", "", "  ì›”  ì¼"] + ["/" for i in range(16)]
+    line_3 = ["", "", "  êµ  ì‹œ"] + ["8" for i in range(16)]
+    line_4 = ["", "", "  ê³¼  ëª©"] + [" " for i in range(16)]
+    line_5 = ["ì—°ë²ˆ", "ë°˜", "ë²ˆí˜¸", "í•™ìƒëª…, ê°•ì‚¬ëª…"] + ["" for i in range(16)]
     line_template = ["" for i in range(18)]
 
     for day in days:
-        # »õ ½ÃÆ®°¡ µé¾î°¥ ¸®½ºÆ®
+        # ìƒˆ ì‹œíŠ¸ê°€ ë“¤ì–´ê°ˆ ë¦¬ìŠ¤íŠ¸
         new_sheet = []
-        header_line = "2020ÇĞ³âµµ ¹æ°úÈÄÇĞ±³ Ãâ¼®ºÎ(" + el + "-"+ day + "¿äÀÏ)"
+        header_line = "2020í•™ë…„ë„ ë°©ê³¼í›„í•™êµ ì¶œì„ë¶€(" + el + "-"+ day + "ìš”ì¼)"
         header = [header_line] + ["" for i in range(18)]
         new_sheet.append(line_1)
         new_sheet.append(line_2)
@@ -86,9 +85,9 @@ for el in classes:
     dictionary_for_book[el] = new_dictionary
 
 
-# ÀÌÁ¦ ¸ğµç ÇĞ»ıµéÀ» ÇÑ¸í¾¿ ÀĞ¾î¿Í Ãâ¼®ºÎ¿¡ »ğÀÔÇÕ´Ï´Ù.
+# ì´ì œ ëª¨ë“  í•™ìƒë“¤ì„ í•œëª…ì”© ì½ì–´ì™€ ì¶œì„ë¶€ì— ì‚½ì…í•©ë‹ˆë‹¤.
 for cls in classes_book:
-    # Ã¹ ¼¼ÁÙ ¹ö¸®°í ÇÑ ÁÙ¾¿ ÀĞ¾î¿À±â
+    # ì²« ì„¸ì¤„ ë²„ë¦¬ê³  í•œ ì¤„ì”© ì½ì–´ì˜¤ê¸°
     for line in cls[3:]:
         class_number = line[1]
         student_id = line[2]
@@ -97,7 +96,7 @@ for cls in classes_book:
         if not name:
             continue
 
-        # °ú¸ñµé »Ì¾Æ¿À±â
+        # ê³¼ëª©ë“¤ ë½‘ì•„ì˜¤ê¸°
         enrolled_classes = line[4:]
         for i, cls_name in enumerate(enrolled_classes):
             splt = cls_name.split("\n")
@@ -105,26 +104,26 @@ for cls in classes_book:
             splt = cls_name.split(" ")
             cls_name = "".join(splt)
             day = days[i]
-            # °ú¸ñ »Ì¾Æ¿À±â
+            # ê³¼ëª© ë½‘ì•„ì˜¤ê¸°
             classbook = result_book[cls_name]
-            # ¿äÀÏº° Ãâ¼®ºÎ »Ì±â
+            # ìš”ì¼ë³„ ì¶œì„ë¶€ ë½‘ê¸°
             daybook = classbook[day]
-            # ¹İ ±âÀçÇÏ±â
+            # ë°˜ ê¸°ì¬í•˜ê¸°
             daybook[dictionary_for_book[cls_name][day]][1] = class_number
-            # ¹øÈ£ ±âÀçÇÏ±â
+            # ë²ˆí˜¸ ê¸°ì¬í•˜ê¸°
             daybook[dictionary_for_book[cls_name][day]][2] = student_id
-            # ÇĞ»ı¸í ±âÀçÇÏ±â
+            # í•™ìƒëª… ê¸°ì¬í•˜ê¸°
             daybook[dictionary_for_book[cls_name][day]][3] = name
             dictionary_for_book[cls_name][day] += 1
 
 for cls_name in classes:
     class_sheet = result_book[cls_name]
     result = px.get_book(bookdict=class_sheet)
-    result.save_as("Ãâ¼®ºÎ_" + cls_name + ".xlsx")
+    result.save_as("ì¶œì„ë¶€_" + cls_name + ".xlsx")
 
-# ÀÛ¾÷ Á¾·á ¸Ş½ÃÁö¸¦ Ãâ·ÂÇÕ´Ï´Ù.
+# ì‘ì—… ì¢…ë£Œ ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
 print("Process Done.")
 
-# ÀÛ¾÷¿¡ ÃÑ ¸î ÃÊ°¡ °É·È´ÂÁö Ãâ·ÂÇÕ´Ï´Ù.
+# ì‘ì—…ì— ì´ ëª‡ ì´ˆê°€ ê±¸ë ¸ëŠ”ì§€ ì¶œë ¥í•©ë‹ˆë‹¤.
 end_time = time.time()
 print("The Job Took " + str(end_time - start_time) + " seconds.")
